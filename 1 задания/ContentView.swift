@@ -1,24 +1,26 @@
-//
-//  ContentView.swift
-//  1 задания
-//
-//  Created by Squeze on 01/11/2025.
-//
-
 import SwiftUI
+
+let countries = ["Россия","США","Канада","Германия","Франция","Япония","Китай",]
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            List(countries, id: \.self) { country in
+                Text(country)
+                    .font(.system(size: 20, weight: .bold))
+                    .frame(maxWidth: .infinity, minHeight: 100)
+                    .contentShape(Rectangle())
+                    .listRowInsets(EdgeInsets())
+            }
+            .navigationTitle("Страны")
+            .listStyle(PlainListStyle())
         }
-        .padding()
     }
 }
 
-#Preview {
-    ContentView()
-}
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+
